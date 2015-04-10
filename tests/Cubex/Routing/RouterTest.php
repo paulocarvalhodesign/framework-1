@@ -1,6 +1,7 @@
 <?php
 namespace CubexTest\Cubex\Routing;
 
+use Cubex\Routing\IRoutable;
 use Cubex\Routing\Route;
 use Cubex\Routing\Router;
 use CubexTest\InternalCubexTestCase;
@@ -49,7 +50,7 @@ class RouterTestInternal extends InternalCubexTestCase
       "No routable subject has been defined"
     );
     $router = new Router();
-    $router->process("/hello");
+    $router->process('/hello');
   }
 
   /**
@@ -67,6 +68,9 @@ class RouterTestInternal extends InternalCubexTestCase
     $router = new Router();
     $router->setCubex($this->newCubexInstace());
     $subject = $this->getMock('\Cubex\Routing\IRoutable', ['getRoutes']);
+    /**
+     * @var $subject IRoutable|\PHPUnit_Framework_MockObject_MockObject
+     */
     $subject->expects($this->any())->method("getRoutes")
       ->will($this->returnValue($routes));
     $router->setSubject($subject);
@@ -145,6 +149,9 @@ class RouterTestInternal extends InternalCubexTestCase
     $router = new Router();
     $router->setCubex($this->newCubexInstace());
     $subject = $this->getMock('\Cubex\Routing\IRoutable', ['getRoutes']);
+    /**
+     * @var $subject IRoutable|\PHPUnit_Framework_MockObject_MockObject
+     */
     $subject->expects($this->any())->method("getRoutes")
       ->will($this->returnValue([':test/:number@num' => 'test']));
     $router->setSubject($subject);

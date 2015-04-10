@@ -237,22 +237,10 @@ abstract class CubexKernel
     $route = null;
     try
     {
-      $route = $router->process($path);
+      $route = $router->process($path, $request->getPathInfo());
     }
     catch(\Exception $e)
     {
-    }
-    if(!$route)
-    {
-      try
-      {
-        $route = $router->process(
-          build_path_unix($this->_pathProcessed, $path)
-        );
-      }
-      catch(\Exception $e)
-      {
-      }
     }
     if((!$route) && $pathParts)
     {

@@ -18,6 +18,11 @@ class Router implements IRouter
   protected $_routeData;
 
   /**
+   * @var string path segments which have previsouly been matched
+   */
+  protected $_fullUrl;
+
+  /**
    * Set the object you wish to handle routing for
    *
    * @param IRoutable $subject
@@ -33,19 +38,21 @@ class Router implements IRouter
   /**
    * Process the url against the subjects routes
    *
-   * @param $url
+   * @param string $url     url section to parse
+   * @param string $fullUrl full request url
    *
    * @return IRoute
    * @throws \RuntimeException When the subject has not been set
    * @throws \Exception When no route can be found
    */
-  public function process($url)
+  public function process($url, $fullUrl = null)
   {
     if($this->_subject === null || !($this->_subject instanceof IRoutable))
     {
       throw new \RuntimeException("No routable subject has been defined");
     }
 
+    $this->_fullUrl = ltrim(nonempty($fullUrl, $url), '/');
     $route = $this->_processRoutes($url, $this->_subject->getRoutes());
     if($route instanceof IRoute)
     {
@@ -66,14 +73,22 @@ class Router implements IRouter
 
     foreach($routes as $pattern => $route)
     {
+      if(starts_with($pattern, '/'))
+      {
+        $search = $this->_fullUrl;
+      }
+      else
+      {
+        $search = $url;
+      }
       $pattern = ltrim($pattern, '/');
-      $matchedPath = $this->matchPattern($url, $pattern);
+      $matchedPath = $this->matchPattern($search, $pattern);
       if($matchedPath !== false)
       {
         $subUrl = preg_replace(
           '#^' . preg_quote($matchedPath, '#') . '#',
           '',
-          $url
+          $search
         );
         if(is_callable($route))
         {

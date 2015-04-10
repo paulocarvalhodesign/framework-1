@@ -62,13 +62,16 @@ class ManualRouteExtension extends ApplicationKernel
   public function getRoutes()
   {
     return [
-      'first-path/:id1@num'               => [
+      'first-path/:id1@num' => [
         'show/:id2@num' => 'doShow'
       ],
-      'manual-route/second-path/:id1@num' => [
-        'show/:id2@num' => 'doShow'
+      'cb'                  => [$this, 'myCallback'],
+      // preceeding slash matches the route from the start of the url
+      '/manual-route'       => [
+        'second-path/:id1@num' => [
+          'show/:id2@num' => 'doShow'
+        ],
       ],
-      'cb'                                => [$this, 'myCallback']
     ];
   }
 }

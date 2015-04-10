@@ -17,11 +17,12 @@ interface IRouter extends ICubexAware
   /**
    * Process the url against the subjects routes
    *
-   * @param $url
+   * @param string $url     url section to parse
+   * @param string $fullUrl full request url
    *
    * @return IRoute
    * @throws \RuntimeException When the subject has not been set
    * @throws \Exception When no route can be found
    */
-  public function process($url);
+  public function process($url, $fullUrl = null);
 }
