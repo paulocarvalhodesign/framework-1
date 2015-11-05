@@ -14,12 +14,6 @@
       "homepage": "http://www.bajb.net"
     }
   ],
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "git@github.com:paulocarvalhodesign/api.git"
-    }
-  ],
   "require": {
     "php": ">=5.4.0",
     "psr/log": "~1.0",
@@ -31,7 +25,7 @@
     "packaged/figlet": "~0",
     "packaged/config": "~0",
     "packaged/helpers": "~0",
-    "packaged/api": "dev-bug-fix",
+    "packaged/api": "*",
     "symfony/http-foundation": "~2.5",
     "symfony/http-kernel": "~2.5",
     "symfony/console": "~2.5",
