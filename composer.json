@@ -31,7 +31,7 @@
     "packaged/figlet": "~0",
     "packaged/config": "~0",
     "packaged/helpers": "~0",
-    "packaged/api": "dev-master",
+    "packaged/api": "dev-bug-fix",
     "symfony/http-foundation": "~2.5",
     "symfony/http-kernel": "~2.5",
     "symfony/console": "~2.5",
