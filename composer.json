@@ -14,6 +14,12 @@
       "homepage": "http://www.bajb.net"
     }
   ],
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "git@github.com:paulocarvalhodesign/api.git"
+    }
+  ],
   "require": {
     "php": ">=5.4.0",
     "psr/log": "~1.0",
@@ -23,9 +29,9 @@
     "illuminate/encryption": "~4.2",
     "monolog/monolog": "~1.10",
     "packaged/figlet": "~0",
-    "packaged/config": "~1.0",
-    "packaged/helpers": "~1.0",
-    "packaged/api": "~0.4",
+    "packaged/config": "~0",
+    "packaged/helpers": "~0",
+    "packaged/api": "dev-master",
     "symfony/http-foundation": "~2.5",
     "symfony/http-kernel": "~2.5",
     "symfony/console": "~2.5",
@@ -36,9 +42,9 @@
     "stack/builder": "~1.0",
     "mustache/mustache": "*",
     "mockery/mockery": "*",
-    "guzzlehttp/guzzle": "~5.2",
-    "geoip2/geoip2": "~2.1",
-    "phpunit/phpunit": "~4.6"
+    "guzzlehttp/guzzle": "~4.2",
+    "geoip2/geoip2": "~0.6",
+    "phpunit/phpunit": "4.1"
   },
   "autoload": {
     "psr-4": {
